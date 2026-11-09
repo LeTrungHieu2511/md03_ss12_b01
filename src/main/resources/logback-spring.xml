@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <appender name="HISTORY_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/history.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/history-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="HISTORY" level="INFO" additivity="false">
+        <appender-ref ref="HISTORY_FILE"/>
+    </logger>
+</configuration>
